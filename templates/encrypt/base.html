@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>AES Locker. By Sobolev Andrey</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}fonts/iconic/css/material-design-iconic-font.min.css">
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}vendor/animate/animate.css">	
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}vendor/css-hamburgers/hamburgers.min.css">
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}vendor/animsition/css/animsition.min.css">
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}vendor/select2/select2.min.css">	
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}vendor/daterangepicker/daterangepicker.css">
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/util.css">
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/main.css">
+	<link rel="apple-touch-icon" sizes="57x57" href="{{ STATIC_URL }}icon/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="{{ STATIC_URL }}icon/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="{{ STATIC_URL }}icon/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="{{ STATIC_URL }}icon/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="{{ STATIC_URL }}icon/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="{{ STATIC_URL }}icon/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="{{ STATIC_URL }}icon/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="{{ STATIC_URL }}icon/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="{{ STATIC_URL }}icon/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="{{ STATIC_URL }}icon/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="{{ STATIC_URL }}icon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="{{ STATIC_URL }}icon/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="{{ STATIC_URL }}icon/favicon-16x16.png">
+	<link rel="manifest" href="{{ STATIC_URL }}icon/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+	{% block css %}
+	{% endblock %}
+</head>
+<body>
+	{% block content %}
+	{% endblock %}
+	<div id="dropDownSelect1"></div>	
+	<script src="{{ STATIC_URL }}vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="{{ STATIC_URL }}vendor/animsition/js/animsition.min.js"></script>
+	<script src="{{ STATIC_URL }}vendor/bootstrap/js/popper.js"></script>
+	<script src="{{ STATIC_URL }}vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="{{ STATIC_URL }}vendor/select2/select2.min.js"></script>
+	<script src="{{ STATIC_URL }}vendor/daterangepicker/moment.min.js"></script>
+	<script src="{{ STATIC_URL }}vendor/daterangepicker/daterangepicker.js"></script>
+	<script src="{{ STATIC_URL }}vendor/countdowntime/countdowntime.js"></script>
+	<script src="{{ STATIC_URL }}js/main.js"></script>
+	{% block js %}
+	{% endblock %}
+</body>
+</html>

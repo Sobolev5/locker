@@ -1,0 +1,96 @@
+{% extends "encrypt/base.html" %}
+
+{% block content %}
+{% load encrypt_tags %}
+<div class="limiter">
+  <div class="container-login100" style="background-image: url('{{ STATIC_URL }}images/bg-01.jpg');">
+    <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+      <form class="login100-form validate-form" action="" method="POST" enctype="application/x-www-form-urlencoded">
+        {% csrf_token %}
+        {% if decrypt %}
+            <span class="login100-form-title p-b-49">
+              Record decrypted 
+            </span>
+            <div class="wrap-input100 validate-input m-b-23">
+              <span class="label-input100">{{ record.uuid }} (UUID)</span>
+            </div>	
+            <div class="validate-input m-b-23">
+              <span class="label-input100">Record text:</span>
+              <textarea class="input100" style="height:150px; width:100%; padding-left:6px;">{{ decrypted_text }}</textarea>
+            </div>	
+            {% if record.can_be_deleted %}
+                <div class="container-login100-form-btn">
+                  <div class="wrap-login100-form-btn">
+                    <div class="login100-form-bgbtn"></div>
+                    <a href="{% url 'delete_record' uuid=record.uuid md5_key=record.md5_key_for_delete %}" class="login100-form-btn" onclick="return confirm('Are you sure?');">
+                      Delete
+                    </a>
+                  </div>
+                </div>
+            {% endif %}
+        {% else %}
+            <span class="login100-form-title p-b-49">
+              View record 
+            </span>
+            <div class="wrap-input100 validate-input m-b-23">
+              <span class="label-input100"><small id="record-url" onclick="copyToClipboard()" style="cursor: pointer;">{{ SITE_URL }}/{{ record.uuid }}/</small></span>
+              <br>
+              <span class="label-input100"><b onclick="copyToClipboard()" style="cursor: pointer;">CLICK TO COPY</b></span>
+            </div>	
+            <div class="wrap-input100 validate-input m-b-23">
+              <span class="label-input100"><small>{{ record.bytes_text_to_str }}</small></span>
+              <br>
+              <span class="label-input100"><small>This is your encrypted text in our database</small></span>              
+            </div>	
+            <div class="wrap-input100 validate-input m-b-40" data-validate="Password is required">
+              <span class="label-input100">Password. {% if invalid_password %}<span style="color:red;font-size:15px;font-weight:bold">Incorrect password. Try again.</span>{% endif %}</span>
+              {{ form.password|attr:"class=input100" }}
+              <span class="focus-input100" data-symbol="&#xf190;"></span>
+            </div>	 
+            {% if record.locked_till and record.locked_till > now %}
+                <div class="container-login100-form-btn">
+                  Record locked till {{ record.locked_till }}. Timezone Europe/Moscow.
+                </div>
+            {% else %}
+                <div class="container-login100-form-btn">
+                  <div class="wrap-login100-form-btn">
+                    <div class="login100-form-bgbtn"></div>
+                    <button class="login100-form-btn">
+                      Decrypt
+                    </button>
+                  </div>
+                </div>
+            {% endif %}
+        {% endif %}
+        <div class="txt1 text-center p-t-54 p-b-20">
+          <span>
+            <a href="{{ SITE_URL }}" style="color:blue">AES Locker</a>. Created by Sobolev Andrey. This project is <a href="https://github.com/Sobolev5" style="color:green">open source</a> and free for commercial use.
+          </span>
+        </div>
+        <div class="flex-c-m">
+          <a href="https://github.com/Sobolev5" class="login100-social-item bg2">
+            <i class="fa fa-github"></i>
+          </a>
+          <a href="mailto:email.asobolev@gmail.com" class="login100-social-item bg3">
+            <i class="fa fa-google"></i>
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+function copyToClipboard(text) {
+  var temp_input = document.body.appendChild(document.createElement("input"));
+  temp_input.value = document.getElementById("record-url").textContent;
+  temp_input.focus();
+  temp_input.select();
+  document.execCommand('copy');
+  temp_input.parentNode.removeChild(temp_input);
+  alert("URL Copied.");
+}
+</script>
+{% endblock %}
