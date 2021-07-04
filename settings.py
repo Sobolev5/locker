@@ -8,7 +8,7 @@ load_dotenv()
 PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(PROJECT_PATH))
 
-DEBUG = True
+DEBUG = os.getenv("DEBUG", False)
 SITE_URL = os.getenv("SITE_URL")
 SECRET_KEY = os.getenv("SECRET_KEY")
 POSTGRES_DB = os.getenv("POSTGRES_DB")
