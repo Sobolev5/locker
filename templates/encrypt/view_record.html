@@ -42,16 +42,17 @@
               <br>
               <span class="label-input100"><small>This is your encrypted text in our database</small></span>              
             </div>	
-            <div class="wrap-input100 validate-input m-b-40" data-validate="Password is required">
-              <span class="label-input100">Password. {% if invalid_password %}<span style="color:red;font-size:15px;font-weight:bold">Incorrect password. Try again.</span>{% endif %}</span>
-              {{ form.password|attr:"class=input100" }}
-              <span class="focus-input100" data-symbol="&#xf190;"></span>
-            </div>	 
+ 
             {% if record.locked_till and record.locked_till > now %}
                 <div class="container-login100-form-btn">
                   Record locked till {{ record.locked_till }}. Timezone Europe/Moscow.
                 </div>
             {% else %}
+                <div class="wrap-input100 validate-input m-b-40" data-validate="Password is required">
+                  <span class="label-input100">Password. {% if invalid_password %}<span style="color:red;font-size:15px;font-weight:bold">Incorrect password. Try again.</span>{% endif %}</span>
+                  {{ form.password|attr:"class=input100" }}
+                  <span class="focus-input100" data-symbol="&#xf190;"></span>
+                </div>	
                 <div class="container-login100-form-btn">
                   <div class="wrap-login100-form-btn">
                     <div class="login100-form-bgbtn"></div>

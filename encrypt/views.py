@@ -56,7 +56,7 @@ def view_record(request, uuid):
         form = ShowRecordForm(request.POST)
         if form.is_valid():
             if record.locked_till:
-                if record.locked_till < now:
+                if record.locked_till > now:
                     raise Http404(f"Record locked till {record.locked_till}")
 
             decrypted_text = Encrypt.decrypt(record.text, record.iv, form.cleaned_data["password"])
